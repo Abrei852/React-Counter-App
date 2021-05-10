@@ -2,18 +2,17 @@ import React, { Component } from "react";
 
 class Counter extends Component {
     state = {
-        count: 0,
+        value: this.props.value,
     };
 
     //Genom att konvertera metoden till en arrow funktion kan den ärva this
-    handleIncrement = product => {
+    handleIncrement = () => {
         // Om det är en referens som t.ex object.method() kommer this vara undefined,
         // om strictmode är enabled kommer this även vara undefined.
         // Om den istället skickas som en stand-alone funktion kommer this vara definierat
-        // this.setState({
-        //     count: this.state.count + 1
-        // })
-        console.log(product);
+        this.setState({
+            value: this.state.value + 1,
+        });
     };
 
     // Async
@@ -24,7 +23,7 @@ class Counter extends Component {
                     {this.formatCount()}
                 </span>
                 <button
-                    onClick={ () => this.handleIncrement(product)}
+                    onClick={this.handleIncrement}
                     className={this.getButtonClasses()}
                 >
                     Increment
@@ -36,7 +35,7 @@ class Counter extends Component {
     //Går att markera en text och klicka på shift+ctrl+r för att skapa en metod
     getBadgeClasses() {
         let classes = "badge m-2 bg-";
-        classes += this.state.count === 0 ? "warning" : "primary";
+        classes += this.state.value === 0 ? "warning" : "primary";
         return classes;
     }
 
@@ -46,8 +45,8 @@ class Counter extends Component {
     }
 
     formatCount() {
-        const { count } = this.state;
-        return count === 0 ? "Zero" : count;
+        const { value } = this.state;
+        return value === 0 ? "Zero" : value;
     }
 }
 
@@ -133,3 +132,6 @@ export default Counter;
 //     super();
 //     this.handleIncrement = this.handleIncrement.bind(this);
 // }
+
+//<h4>{this.props.id}</h4> Man kan ta in props i en t.ex h4 genom 
+//att skicka id från parent och använda this.props.children
