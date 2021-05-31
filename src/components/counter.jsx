@@ -6,18 +6,19 @@ class Counter extends Component {
     //Compare new prop to new prop
     //Ajax call to update, if update 
     //If not update no Ajax
-    componentDidUpdate(prevProps, prevState) {
-        console.log(prevProps);
-        console.log(prevState);
-        if (prevProps.counter.value !== this.props.counter.value) {
-            //Ajax call and get new data from server
-        }
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log(prevProps);
+    //     console.log(prevState);
+    //     if (prevProps.counter.value !== this.props.counter.value) {
+    //         //Ajax call and get new data from server
+    //         console.log("hej");
+    //     }
+    // }
 
     //Called just before an component is removed from the DOM
-    componentWillUnmount() {
-        console.log("unmounted");
-    }
+    // componentWillUnmount() {
+    //     console.log("unmounted");
+    // }
 
     //Controlled component, har inte egen lokal state, får data från parent och skickar en event till parent
 
@@ -40,6 +41,9 @@ class Counter extends Component {
                     onClick={() => this.props.onDelete(this.props.counter.id)}
                 >
                     Delete
+                </button>
+                <button className={this.getButtonClasses()} onClick={() => this.props.onDecrement(this.props.counter)}>
+                    Decrease
                 </button>
             </div>
         );

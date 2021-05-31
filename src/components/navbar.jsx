@@ -5,7 +5,6 @@ import React from "react";
 //Går inte att använda lifecycle hooks
 
 const NavBar = ({ totalCounters }) => {
-    console.log("navbar rendered");
     return (
         <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
